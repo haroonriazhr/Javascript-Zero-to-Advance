@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-blue-50 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-semibold text-center mb-6">🌤️ Weather App</h1>
 
-    <script src="script.js"></script>
+    <!-- Search Bar -->
+    <div class="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full shadow-inner focus-within:ring-2 ring-blue-400">
+      <input id="cityInput"
+             type="text"
+             placeholder="Enter city name"
+             class="flex-1 bg-transparent focus:outline-none text-gray-800 placeholder-gray-500" />
+      <button onclick="getWeather()"
+              class="bg-blue-500 text-white px-4 py-1.5 rounded-full hover:bg-blue-600 transition">
+        Search
+      </button>
+    </div>
+
+    <!-- Result -->
+    <div id="result" class="mt-6 hidden bg-blue-100 text-blue-800 p-4 rounded-xl text-center">
+      <p id="weatherOutput" class="text-lg font-medium"></p>
+    </div>
+  </div>
+
+<script src="intermediate_finalproject.js"></script>
 </body>
 </html>

@@ -27,7 +27,7 @@ fruits.shift(); → ['banana']
 ? Example: 
 fruits.unshift('kiwi'); → ['kiwi', 'banana']
 
-*  slice: Copies a part of the array to a new array and has two parts starting index and ending index and ending inndex is not include in new array (doesn’t change the original).
+*  slice: Copies a part of the array to a new array and has two parts starting index and ending index and ending index is not include in new array (It doesn’t change the original).
 ? Example: 
 fruits.slice(0, 1); → ['kiwi'] (original stays ['kiwi', 'banana'])
 
@@ -75,8 +75,8 @@ person.sayName = function() { return this.name; }; → person.sayName() returns 
 
 ! Object/Array Destructuring, Spread Operator
 
-* Destructuring: Destructuring in JavaScript is a simple way to take values from arrays or properties from objects and put them into separate variables. You can use it wherever you're assigning or creating new variables, like on the left side of an assignment.
-! Skip elements, rename variables, set defaults, or use rest parameters
+* Destructuring: Destructuring in JavaScript is a simple way to take values from arrays or properties from objects and put them into separate variables. You can use it wherever you're assigning or creating new variables.
+! Skip elements, rename variables, set defaults, or use rest parameters.
 ? Example (Array):
 let arr = [1,2,3,4,5,6,7,8];
 let [a,b, , , ,...rest] = arr;
@@ -147,11 +147,54 @@ function infinite() { infinite(); } → Crash!
 * Sorting
 * Bubble Sort: Keeps swapping elements until the array is sorted.
 ? Example: 
-[5, 3, 1] → Swap 5 and 3: [3, 5, 1] → Swap 5 and 1: [3, 1, 5] → [1, 3, 5]
+let arrbub = [5, 4, 6, 7, 8];
+
+for (let i = 0; i < arrbub.length - 1; i++) {
+  for (let j = 0; j < arrbub.length - 1 - i; j++) {
+    if (arrbub[j] > arrbub[j + 1]) {
+      let temp = arrbub[j];
+      arrbub[j] = arrbub[j + 1];
+      arrbub[j + 1] = temp;
+    }
+  }
+}
+
+console.log(arrbub);
+* Insertion Sort: Insertion sort is a way to arrange numbers in order (like smallest to biggest)
+? Example: 
+let arr = [12, 10, 8, 11, 9];
+
+for (let i = 1; i < arr.length; i++) {
+    let key = arr[i];
+    let j = i - 1;
+
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+
+    arr[j + 1] = key;
+  }
+console.log(arr);
+
 
 * Selection Sort: Finds the smallest element and puts it first, repeats.
 ? Example: 
-[5, 3, 1] → Pick 1: [1, 3, 5]
+let arrsel = [13, 14, 15, 10, 9];
+
+for (let i = 0; i < arrsel.length - 1; i++) {
+  let minIndex = i;
+
+  for (let j = i + 1; j < arrsel.length; j++) {
+    if (arrsel[j] < arrsel[minIndex]) {
+      minIndex = j;
+    }
+  }
+  let temp = arrsel[i];
+  arrsel[i] = arrsel[minIndex];
+  arrsel[minIndex] = temp;
+}
+console.log(arrsel);
 
 * Searching
 * Linear Search: Checks each element one by one.
@@ -161,8 +204,7 @@ Find 3 in [1, 3, 5] → Check 1 (no), 3 (yes!) → Found at position 1
 * Binary Search: Cuts the sorted array in half each time.
 ? Example: 
 Find 3 in [1, 3, 5] → Check middle (3) → Found!
-
-? Some More Methods:
+==================================================================
 * Join: Takes all elements in an array and combines them into a single string, with an optional separator between them.
 ? Example
 let arr = ["apple", "banana", "orange"];
@@ -262,12 +304,12 @@ for (let i = 1; i <= 5; i++) {
   }
   console.log(row);
 }
-// Output:
-// 1   2   3   4   5
-// 2   4   6   8   10
-// 3   6   9   12  15
-// 4   8   12  16  20
-// 5   10  15  20  25
+ Output:
+1   2   3   4   5
+2   4   6   8   10
+3   6   9   12  15
+4   8   12  16  20
+5   10  15  20  25
 ================================================================= 
 ! Q#6: Write a recursive function to calculate Fibonacci numbers?
 =================================================================
@@ -283,7 +325,7 @@ function bubbleSort(arr) {
   for (let i = 0; i < len; i++) {
     for (let j = 0; j < len - 1 - i; j++) {
       if (arr[j] > arr[j + 1]) {
-        // Swap
+        * Swap
         let temp = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
@@ -297,4 +339,87 @@ console.log(bubbleSort(unsorted)); // [1, 2, 3, 5, 8]
 ================================================================
 todo Q#8: Solve 10 easy problems on LeetCode (e.g., 'Two Sum')? //Pending...
 */
-// todo: Build a Weather App (fetch API data, display temperature). //Pending...
+// ? Build a Weather App (fetch API data, display temperature). //Done
+
+// let arr = [12, 13, 14, 4, 6, 657, 7, 8, 79];
+// let n = arr.length;
+
+// bubble
+// for (let i = 0; i < n; i++) {
+//   for (let j = 0; j < n - i - 1; j++) {
+//     if (arr[j] > arr[j + 1]) {
+//       [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+//     }
+//   }
+// }
+// console.log(arr);
+
+// slection
+// for (let i = 0; i < n-1; i++) {
+//   let minIndex = i;
+//   for (let j = i+1; j < n; j++) {
+//     if (arr[minIndex] > arr[j]) {
+//       minIndex = j;
+//     }
+//     if(arr[i]!= minIndex){
+//       [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+//     }
+//   }
+// }
+// console.log(arr)
+
+// let arr = [1, 1, 2, 3, 4, 4, 5, 5, 6];
+// function dup(arr) {
+//    return arr.filter((elem,idx)=>(arr.indexOf(elem)===idx));
+// }
+// console.log(dup(arr));
+
+// let dobarr =  arr.map((elem)=>{
+//    return elem*2;
+// });
+// console.log(dobarr);
+
+// let obj = {
+//   brand: "Toyota",
+//   model: "GLi",
+//   year: 2020,
+//   showspec:function () {
+//     return`${this.brand} ${this.model}, Year: ${this.year}`
+//   }
+// };
+// console.log(obj.showspec());
+
+// let {brand,year} = obj;
+// console.log(brand,year)
+
+// for (let i = 15; i <=15; i++) {
+//   for (let j = 1; j <=10; j++) {
+//     console.log(`${i} * ${j} = ${i*j}`)
+//   }
+// }
+
+// function seq(n){
+//   let seq = [];
+//   for (let i = 0; i <n; i++) {
+//     seq.push(fibonacci(i))
+//   }
+//   return seq;
+// }
+// function fibonacci(n) {
+//   if (n <= 1) return n;
+//   return fibonacci(n - 1) + fibonacci(n - 2);
+// }
+// console.log(seq(6));
+
+// let arr2 = [1,234,345,6,65,75,8,780];
+
+// let n = arr.length;
+
+// for (let i = 0; i < n; i++) {
+//    for (let j = 0; j < n-1-i; j++) {
+//     if (arr2[j]>arr2[j+1]) {
+//       [arr2[j],arr2[j+1]] = [arr2[j+1],arr2[j]];      
+//     }
+//    }
+// }
+// console.log(arr2)
